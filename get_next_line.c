@@ -6,7 +6,7 @@
 /*   By: tsordo-o <tsordo-o@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 14:49:58 by tsordo-o          #+#    #+#             */
-/*   Updated: 2026/05/14 19:50:48 by tsordo-o         ###   ########.fr       */
+/*   Updated: 2026/05/14 20:42:21 by tsordo-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,24 @@ size_t	next_new_line(char *str)
 	return (stop);
 }
 
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s)
+	{
+		if ((unsigned char) *s == (unsigned char) c)
+			return ((char *) s);
+		s++;
+	}
+	return ((char *) (s-1));
+}
+
 char	*get_next_line(int fd)
 {
 	static fd_list			fd_arr[1024];
 	char			*new_line;
 	char			*buffer;
 	char 			*tmp_str;
+	char			*left_overs;
 	int				bytes_read;
 
 	if (fd < 0 || BUFFER_SIZE < 0)
@@ -64,9 +76,10 @@ char	*get_next_line(int fd)
 		free(fd_arr[fd].content);
 		fd_arr[fd].content = tmp_str;
 	}
-	new_line = ft_strdup(fd_arr[fd].content);
+	new_line = ft_strdup(fd_arr[fd].content, ft_strchr(fd_arr[fd].content, '\n') + 1);
+	left_overs = ft_strdup(ft_strchr(fd_arr[fd].content, '\n') + 1, NULL);
 	free(fd_arr[fd].content);
-	fd_arr[fd].content = NULL;
+	fd_arr[fd].content = left_overs;
 	free(buffer);
 	if (!new_line)
 	{

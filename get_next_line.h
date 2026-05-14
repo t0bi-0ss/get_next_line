@@ -6,7 +6,7 @@
 /*   By: tsordo-o <tsordo-o@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 11:37:23 by tsordo-o          #+#    #+#             */
-/*   Updated: 2026/05/14 19:57:10 by tsordo-o         ###   ########.fr       */
+/*   Updated: 2026/05/14 20:23:03 by tsordo-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_list
 #include <unistd.h>
 
 //Prototypes
-char	*ft_strdup(const char *s);
+char	*ft_strdup(const char *s, char *stop);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*get_next_line(int fd);
 #endif

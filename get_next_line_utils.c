@@ -6,7 +6,7 @@
 /*   By: tsordo-o <tsordo-o@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 11:39:56 by tsordo-o          #+#    #+#             */
-/*   Updated: 2026/05/14 19:43:16 by tsordo-o         ###   ########.fr       */
+/*   Updated: 2026/05/14 20:44:01 by tsordo-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,17 +100,48 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (final_str);
 }
 
-char	*ft_strdup(const char *s)
+// char	*ft_strdup(const char *s, int stop, int start)
+// {
+// 	size_t	s_len;
+// 	char	*ptr;
+
+// 	if (!s)
+// 		return (NULL);
+// 	s_len = 0;
+// 	while (s[s_len])
+// 		s_len++;
+// 	if (stop == 0 && start == 0)
+// 		ptr = ft_calloc(1, s_len + 1);
+// 	else if (stop > 0)
+// 		ptr = ft_calloc(1, stop + 1);
+// 	else
+// 		ptr = ft_calloc(1, s_len - start + 1);
+// 	if (!ptr)
+// 		return (NULL);
+// 	if (stop == 0 && start == 0)
+// 		ft_strlcat(ptr, s, s_len + 1);
+// 	else if (stop > 0)
+// 		ft_strlcat(ptr, s, stop + 1);
+// 	else
+// 		ft_strlcat(ptr, s + start, s_len - start + 1);
+// 	return (ptr);
+// }
+
+char	*ft_strdup(const char *s, char *stop)
 {
 	size_t	s_len;
 	char	*ptr;
 
-	if (!s || *s == '\0')
-		return (NULL);
 	s_len = 0;
-	while (s[s_len])
-		s_len++;
-	ptr = ft_calloc(1, s_len + 1);
+	if (!s)
+		return (NULL);
+	if (!stop)
+		while (s[s_len])
+			s_len++;
+	else
+		while(s[s_len] != *stop)
+			s_len++;
+	ptr = ft_calloc(sizeof(char), s_len + 1);
 	if (!ptr)
 		return (NULL);
 	ft_strlcat(ptr, s, s_len + 1);
