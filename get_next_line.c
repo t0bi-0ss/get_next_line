@@ -6,7 +6,7 @@
 /*   By: tsordo-o <tsordo-o@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 14:49:58 by tsordo-o          #+#    #+#             */
-/*   Updated: 2026/05/14 19:40:23 by tsordo-o         ###   ########.fr       */
+/*   Updated: 2026/05/14 19:50:48 by tsordo-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ size_t	next_new_line(char *str)
 
 char	*get_next_line(int fd)
 {
-	fd_list			fd_arr[1024];
+	static fd_list			fd_arr[1024];
 	char			*new_line;
 	char			*buffer;
 	char 			*tmp_str;

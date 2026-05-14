@@ -6,7 +6,7 @@
 /*   By: tsordo-o <tsordo-o@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 11:37:23 by tsordo-o          #+#    #+#             */
-/*   Updated: 2026/05/14 19:36:32 by tsordo-o         ###   ########.fr       */
+/*   Updated: 2026/05/14 19:57:10 by tsordo-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 // BUFFER_SIZE
 #ifndef BUFFER_SIZE
-	#define BUFFER_SIZE 1
+	#define BUFFER_SIZE 30
 #endif
 
 // STRUCT
