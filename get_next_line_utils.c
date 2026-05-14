@@ -6,7 +6,7 @@
 /*   By: tsordo-o <tsordo-o@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 11:39:56 by tsordo-o          #+#    #+#             */
-/*   Updated: 2026/05/11 19:15:41 by tsordo-o         ###   ########.fr       */
+/*   Updated: 2026/05/14 19:43:16 by tsordo-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,11 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 
 	dst_len = 0;
 	src_len = 0;
-	while (dst[dst_len])
-		dst_len++;
+	if (dst)
+		while (dst[dst_len])
+			dst_len++;
+	if (!src)
+		return(0);
 	while (src[src_len])
 		src_len++;
 	if (size == 0)
@@ -81,10 +84,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	s1_len = 0;
 	s2_len = 0;
-	while (s1[s1_len])
-		s1_len++;
-	while (s2[s2_len])
-		s2_len++;
+	if (s1)
+		while (s1[s1_len])
+			s1_len++;
+	if (s2)
+		while (s2[s2_len])
+			s2_len++;
 	size = s1_len + s2_len + 1;
 	final_str = malloc(size * sizeof(char));
 	if (!final_str)
@@ -95,31 +100,19 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (final_str);
 }
 
-/* Creates a duplicate of a string until stop or from start,
-	if stop == 0  or start == 0 copies whole string*/
-char	*ft_strdup(const char *s, int stop, int start)
+char	*ft_strdup(const char *s)
 {
 	size_t	s_len;
 	char	*ptr;
 
-	if (!s)
+	if (!s || *s == '\0')
 		return (NULL);
 	s_len = 0;
 	while (s[s_len])
 		s_len++;
-	if (stop == 0 && start == 0)
-		ptr = ft_calloc(1, s_len + 1);
-	else if (stop > 0)
-		ptr = ft_calloc(1, stop + 1);
-	else
-		ptr = ft_calloc(1, s_len - start + 1);
+	ptr = ft_calloc(1, s_len + 1);
 	if (!ptr)
 		return (NULL);
-	if (stop == 0 && start == 0)
-		ft_strlcat(ptr, s, s_len + 1);
-	else if (stop > 0)
-		ft_strlcat(ptr, s, stop + 1);
-	else
-		ft_strlcat(ptr, s + start, s_len - start + 1);
+	ft_strlcat(ptr, s, s_len + 1);
 	return (ptr);
 }
