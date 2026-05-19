@@ -6,7 +6,7 @@
 /*   By: tsordo-o <tsordo-o@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 14:49:58 by tsordo-o          #+#    #+#             */
-/*   Updated: 2026/05/19 16:30:07 by tsordo-o         ###   ########.fr       */
+/*   Updated: 2026/05/19 16:40:10 by tsordo-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	get_new_line(char **new_line, char **buffer, t_fd_list *fd_arr_element)
 
 char	*get_next_line(int fd)
 {
-	static t_fd_list	fd_arr[1024];
+	static t_fd_list	fd_list;
 	char				*new_line;
 	char				*buffer;
 
@@ -83,9 +83,9 @@ char	*get_next_line(int fd)
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (NULL);
-	if (!fill_arr_element(&fd_arr[fd], &buffer, fd))
+	if (!fill_arr_element(&fd_list, &buffer, fd))
 		return (NULL);
-	if (!get_new_line(&new_line, &buffer, &fd_arr[fd]))
+	if (!get_new_line(&new_line, &buffer, &fd_list))
 		return (NULL);
 	return (new_line);
 }
