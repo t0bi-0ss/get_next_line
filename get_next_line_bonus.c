@@ -6,7 +6,7 @@
 /*   By: tsordo-o <tsordo-o@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 14:49:58 by tsordo-o          #+#    #+#             */
-/*   Updated: 2026/05/19 16:44:03 by tsordo-o         ###   ########.fr       */
+/*   Updated: 2026/05/21 19:26:04 by tsordo-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	fill_arr_element(t_fd_list *fd_arr_element, char **buffer, int fd)
 	int		bytes_read;
 
 	bytes_read = 0;
-	while (!ft_strchr(fd_arr_element->content, '\n'))
+	while (!ft_strchr(fd_arr_element->content, DELIMITER))
 	{
 		bytes_read = read(fd, *buffer, BUFFER_SIZE);
 		if (bytes_read == 0)
@@ -55,11 +55,11 @@ int	get_new_line(char **new_line, char **buffer, t_fd_list *fd_arr_element)
 {
 	char	*left_overs;
 
-	*new_line = ft_strdup(fd_arr_element->content, '\n');
-	if (!ft_strchr(fd_arr_element->content, '\n'))
+	*new_line = ft_strdup(fd_arr_element->content, DELIMITER);
+	if (!ft_strchr(fd_arr_element->content, DELIMITER))
 		left_overs = NULL;
 	else
-		left_overs = ft_strdup(ft_strchr(fd_arr_element->content, '\n') + 1, 0);
+		left_overs = ft_strdup(ft_strchr(fd_arr_element->content, DELIMITER) + 1, 0);
 	free(fd_arr_element->content);
 	fd_arr_element->content = left_overs;
 	free(*buffer);
