@@ -6,7 +6,7 @@
 /*   By: tsordo-o <tsordo-o@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 11:39:56 by tsordo-o          #+#    #+#             */
-/*   Updated: 2026/05/19 16:44:11 by tsordo-o         ###   ########.fr       */
+/*   Updated: 2026/05/26 15:59:42 by tsordo-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,11 @@ void	*ft_calloc(size_t nmemb, size_t size)
 
 	if (nmemb == 0 || size == 0)
 	{
-		ptr = malloc(1);
-		if (!ptr)
-			return (NULL);
-		return (ptr);
+		// ptr = malloc(1);
+		// if (!ptr)
+		// 	return (NULL);
+		// return (ptr);
+		return (NULL);
 	}
 	total_size = nmemb * size;
 	if (total_size / nmemb != size)
@@ -118,7 +119,8 @@ char	*ft_strdup(const char *s, char stop)
 	{
 		while (s[s_len] && s[s_len] != stop)
 			s_len++;
-		s_len++;
+		if (s[s_len] && s[s_len] == DELIMITER)
+			s_len++;
 	}
 	ptr = ft_calloc(sizeof(char), s_len + 1);
 	if (!ptr)
