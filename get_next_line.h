@@ -6,7 +6,7 @@
 /*   By: tsordo-o <tsordo-o@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 11:37:23 by tsordo-o          #+#    #+#             */
-/*   Updated: 2026/05/21 19:25:32 by tsordo-o         ###   ########.fr       */
+/*   Updated: 2026/05/26 18:49:59 by tsordo-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
 # endif
+
+// MAX fd NUMBER
+#ifndef OPEN_MAX
+# define OPEN_MAX 1024
+#endif
 
 // DELIMITER
 # ifndef DELIMITER
