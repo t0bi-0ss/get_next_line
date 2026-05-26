@@ -6,7 +6,7 @@
 /*   By: tsordo-o <tsordo-o@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 14:49:58 by tsordo-o          #+#    #+#             */
-/*   Updated: 2026/05/21 19:25:49 by tsordo-o         ###   ########.fr       */
+/*   Updated: 2026/05/25 17:25:26 by tsordo-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,11 @@ int	fill_arr_element(t_fd_list *fd_arr_element, char **buffer, int fd)
 	{
 		bytes_read = read(fd, *buffer, BUFFER_SIZE);
 		if (bytes_read == 0)
+		{
+			free(*buffer);
+			*buffer = NULL;
 			break ;
+		}
 		if (bytes_read < 0)
 		{
 			free(*buffer);
