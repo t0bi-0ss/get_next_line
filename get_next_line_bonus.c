@@ -6,7 +6,7 @@
 /*   By: tsordo-o <tsordo-o@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 14:49:58 by tsordo-o          #+#    #+#             */
-/*   Updated: 2026/05/21 19:26:04 by tsordo-o         ###   ########.fr       */
+/*   Updated: 2026/05/26 18:35:21 by tsordo-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,11 @@ int	get_new_line(char **new_line, char **buffer, t_fd_list *fd_arr_element)
 
 char	*get_next_line(int fd)
 {
-	static t_fd_list	fd_arr[1024];
+	static t_fd_list	fd_arr[OPEN_MAX];
 	char				*new_line;
 	char				*buffer;
 
-	if (fd < 0 || BUFFER_SIZE < 0)
+	if (fd < 0 || BUFFER_SIZE < 0 || fd >= OPEN_MAX)
 		return (NULL);
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
